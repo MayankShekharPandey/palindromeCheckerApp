@@ -10,24 +10,21 @@ public class PalindromeCheckerApp {
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        PalindromeStrategy strategy = new StackStrategy();
+        long startTime = System.nanoTime();
 
-        boolean result = strategy.check(input);
+        boolean result = checkPalindrome(input);
+
+        long endTime = System.nanoTime();
+        long executionTime = endTime - startTime;
 
         System.out.println("Input: " + input);
         System.out.println("Is Palindrome?: " + result);
+        System.out.println("Execution Time: " + executionTime + " ns");
 
         sc.close();
     }
-}
 
-interface PalindromeStrategy {
-    boolean check(String input);
-}
-
-class StackStrategy implements PalindromeStrategy {
-
-    public boolean check(String input) {
+    public static boolean checkPalindrome(String input) {
 
         Stack<Character> stack = new Stack<>();
 
